@@ -14,4 +14,8 @@ export class ShoppingListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  // tslint:disable-next-line: typedef
+  onAddIngredient(newIngredient: Ingredient) {
+    this.ingredients.push(newIngredient);
+  }
 }
