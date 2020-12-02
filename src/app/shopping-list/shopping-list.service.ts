@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Ingredient } from './../shared/ingredient.model';
 
 @Injectable({ providedIn: 'root' })
