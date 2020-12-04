@@ -19,40 +19,39 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="name"></label>
+            <label for="name">Name</label>
             <input
               type="text"
               id="name"
               formControlName="name"
               class="form-control"
             />
-            Name
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="imagePath"></label>
+            <label for="imagePath">Image URL</label>
             <input
               type="text"
               id="imagePath"
               formControlName="imagePath"
               class="form-control"
+              #imageURL
             />
-            Image URL
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive" alt="" />
+          <img [src]="imageURL.value" class="img-responsive" alt="" />
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="description"></label>
+            <label for="description"> Description</label>
             <textarea
               type="text"
               id="description"
@@ -60,7 +59,6 @@
               class="form-control"
               row="6"
             ></textarea>
-            Description
           </div>
         </div>
       </div>
