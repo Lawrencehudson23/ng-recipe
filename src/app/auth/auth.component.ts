@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
+  isLoading = false;
   authForm: FormGroup;
+  error: string = null;
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class AuthComponent implements OnInit {
     }
     const { email, password } = this.authForm.value;
 
+    this.isLoading = true;
     // NOTE: Check if it is login or register
     if (this.isLoginMode) {
       // ...
@@ -40,9 +43,12 @@ export class AuthComponent implements OnInit {
       this.authService.signUp(email, password).subscribe(
         (resData) => {
           console.log('resData: ', resData);
+          this.isLoading = false;
         },
         (error) => {
           console.log('error: ', error);
+          this.error = 'An error occurred!';
+          this.isLoading = false;
         }
       );
     }
