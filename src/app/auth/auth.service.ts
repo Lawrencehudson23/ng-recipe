@@ -1,7 +1,7 @@
 import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError, Subject } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 export interface AuthResponseData {
@@ -17,8 +17,7 @@ export interface AuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
-  user = new Subject<User>();
-
+  user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient) {}
 
   signUp(email: string, password: string) {
