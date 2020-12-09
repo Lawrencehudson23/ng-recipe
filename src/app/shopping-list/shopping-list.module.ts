@@ -1,13 +1,13 @@
+import { SharedModule } from './../shared/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list.component';
 @NgModule({
   declarations: [ShoppingListComponent, ShoppingEditComponent],
   imports: [
-    CommonModule,
+    // NOTE: ngFor ngIf
     FormsModule,
     RouterModule.forChild([
       {
@@ -15,6 +15,7 @@ import { ShoppingListComponent } from './shopping-list.component';
         component: ShoppingListComponent,
       },
     ]),
+    SharedModule,
   ],
   exports: [RouterModule],
 })
