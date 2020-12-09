@@ -6,11 +6,11 @@ import { Ingredient } from './../shared/ingredient.model';
 export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
-
   private ingredients: Ingredient[] = [
     new Ingredient('Apple', 5),
     new Ingredient('Orange', 10),
   ];
+
   getIngredients(): Ingredient[] {
     return this.ingredients.slice();
   }

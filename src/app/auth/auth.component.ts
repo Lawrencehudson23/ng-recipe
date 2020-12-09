@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
   Component,
   ComponentFactoryResolver,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -80,7 +81,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.error = null;
   }
 
-  private showErrorAlert(message: string) {
+  private showErrorAlert(message: string): void {
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
       AlertComponent
     );
