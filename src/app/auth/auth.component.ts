@@ -1,8 +1,9 @@
+import { AlertComponent } from './../shared/alert/alert.component';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,11 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   authForm: FormGroup;
   error: string = null;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
@@ -55,10 +60,20 @@ export class AuthComponent implements OnInit {
       (errorMessage) => {
         console.log('error: ', errorMessage);
         this.error = errorMessage;
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
 
     this.authForm.reset();
+  }
+  onHandleError(): void {
+    this.error = null;
+  }
+
+  private showErrorAlert(message: string) {
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
+      AlertComponent
+    );
   }
 }
