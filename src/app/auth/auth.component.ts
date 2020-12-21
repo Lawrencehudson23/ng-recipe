@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSwitchMode() {
+  onSwitchMode(): void {
     this.isLoginMode = !this.isLoginMode;
   }
   onSubmit() {
